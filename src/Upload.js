@@ -39,7 +39,6 @@ class Upload extends React.Component {
       // this is the parse receipt
       console.log(response)
       console.log(response.data.responses[0].textAnnotations[0].description)
-      // console.log('response is', response.data.responses[0].fullTextAnnotation.text)
     })
   }
 
@@ -47,6 +46,7 @@ class Upload extends React.Component {
     e.preventDefault();
     let reader = new FileReader();
     let image = e.target.files[0];
+    reader.readAsDataURL(image);
 
     reader.onloadend = () => {
       this.setState({
@@ -54,7 +54,6 @@ class Upload extends React.Component {
         imageViewer: reader.result,
       })
     }
-    reader.readAsDataURL(image);
   }
 
   render() {
