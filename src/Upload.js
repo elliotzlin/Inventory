@@ -20,10 +20,6 @@ class Upload extends React.Component {
     axios(googleV, {
       method: 'POST',
       mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: "application/json, text/plain, */*",
-     },
       data: {
         "requests": [
           {
@@ -32,7 +28,7 @@ class Upload extends React.Component {
             },
             "features": [
               {
-                "type": "TEXT_DETECTION"
+                "type": "DOCUMENT_TEXT_DETECTION"
               }
             ]
           }
@@ -41,7 +37,9 @@ class Upload extends React.Component {
     })
     .then(response => {
       // this is the parse receipt
-      console.log('response is', response)
+      console.log(response)
+      console.log(response.data.responses[0].textAnnotations[0].description)
+      // console.log('response is', response.data.responses[0].fullTextAnnotation.text)
     })
   }
 
