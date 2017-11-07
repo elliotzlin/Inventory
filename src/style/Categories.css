@@ -1,0 +1,43 @@
+.input-categories {
+  width: 400px;
+  padding-right: 50px;
+  border: 3px solid #f7b733;
+  border-radius: .25rem;
+}
+
+.button-add {
+  margin-left: -50px;
+  height: 27px;
+  width: 49px;
+  background: #fc4a1a;
+  color: white;
+  border: 0;
+  text-align: center;
+  padding-top: 2px;
+  border-right: 2px solid #f7b733;
+  border-bottom: 1px solid #f7b733;
+}
+
+.one-cat {
+  background: #dfdce3;
+  border-radius: .25rem;
+  border: 1px solid #f7b733;
+  color: #fc4a1a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.one-cat-label {
+  margin-left: 1rem;
+}
+
+.one-cat-addition {
+  color: white;
+  margin-right: 1rem;
+}
+
+.selected {
+  color: #fc4a1a;
+  margin-right: 1rem;
+}

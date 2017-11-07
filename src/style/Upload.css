@@ -1,0 +1,15 @@
+.img-upload {
+  width: 200px;
+}
+
+.img-preview {
+  width: 200px;
+  height: 500px;
+  overflow: scroll;
+}
+
+.preview-text {
+  text-align: center;
+  height: 500px;
+  line-height: 500px;
+}

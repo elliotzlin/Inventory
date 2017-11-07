@@ -1,0 +1,12 @@
+.App-header {
+  background-color: #4abdac;
+  height: 75px;
+  padding: 20px 0 20px 0;
+  color: white;
+}
+
+.App-container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
