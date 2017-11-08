@@ -67,9 +67,9 @@ class Categories extends React.Component {
       this.props.updateUtilsBtn(false, null);
     }
     if (isCheck) {
-      this.props.updateUtilsBtn(null, true)
+      this.props.updateUtilsBtn(null, true);
     } else {
-      this.props.updateUtilsBtn(null, false)
+      this.props.updateUtilsBtn(null, false);
     }
     this.props.updateCat(updatedCat);
   }
