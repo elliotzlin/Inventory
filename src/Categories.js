@@ -106,7 +106,7 @@ class Categories extends React.Component {
                 {one.label}
               </span>
               <span className="cat-icons">
-                <a role="button" style={{ 'color': 'black' }}><i className="fa fa-pencil" aria-hidden="true"></i></a>
+                <a role="button" onClick={() => this.props.editCatName(one)} style={{ 'color': 'black' }}><i className="fa fa-pencil" aria-hidden="true"></i></a>
                 <span className="check-wrapper"><a
                   onClick={() => this.onClickCheck(one.id, 'check')}
                   className={checkSelected}

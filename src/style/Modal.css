@@ -16,3 +16,18 @@
   color: white;
   background-color: #fc4a1a;
 }
+
+.del-btn:active, .del-btn:hover {
+  background-color: #bf2900;
+}
+
+.cancel-btn:active, .cancel-btn:hover {
+  background-color: #a29f9f;
+}
+
+.edit-input {
+  width: 280px;
+  padding-right: 50px;
+  border: 3px solid #f7b733;
+  border-radius: .25rem;
+}

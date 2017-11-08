@@ -9,7 +9,7 @@ const DelModal = (props) => (
       Are you sure you want to delete these categories?
     </div>
     <div className="modal-btn">
-      <button onClick={props.delModalNo} className="btn">Cancel</button>
+      <button onClick={props.delModalNo} className="btn cancel-btn">Cancel</button>
       <button onClick={props.delModalYes} className="btn del-btn">Delete</button>
     </div>
   </div>

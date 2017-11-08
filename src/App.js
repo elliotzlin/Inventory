@@ -5,6 +5,7 @@ import Upload from './Upload';
 import InfoRow from './InfoRow';
 import Header from './Header';
 import DelModal from './DelModal';
+import EditModal from './EditModal';
 
 class App extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class App extends Component {
       isDel: false,
       isMerge: false,
       isDelModal: false,
+      isEditModal: false,
     }
   }
 
@@ -107,11 +109,31 @@ class App extends Component {
       categories: newCat,
       isDelModal: false,
       isDel: false,
+    }, () => {
+      let isCheckMark = false;
+      let categories = this.state.categories;
+      for (var i=0; i<categories.length; i++) {
+        if (categories[i].checkMark) isCheckMark = true;
+      }
+      if (isCheckMark) {
+        this.setState({ isMerge: true });
+      } else {
+        this.setState({ isMerge: false });
+      }
     })
   }
 
   delModalNo = () => {
     this.setState({ isDelModal: false });
+  }
+
+  editCatName = (cat) => {
+    this.setState({ isEditModal: !this.state.isEditModal });
+    this.cat = cat;
+  }
+
+  submitNewCatName = (cats) => {
+    this.setState({ categories: cats });
   }
 
   render() {
@@ -120,6 +142,7 @@ class App extends Component {
         <header className="App-header">
           <Header
             {...this.state}
+            editCatName={this.editCatName}
             callDelModal={this.callDelModal}
             updateUtilsBtn={this.updateUtilsBtn}
             updateCat={this.updateCat}
@@ -134,6 +157,16 @@ class App extends Component {
           />
           <InfoRow {...this.state} />
         </div>
+        {this.state.isEditModal ? (
+          <div className="modal">
+            <EditModal
+              cat={this.cat}
+              submitNewCatName={this.submitNewCatName}
+              editCatName={this.editCatName}
+              categories={this.state.categories}
+            />
+          </div> ) : null
+        }
         {this.state.isDelModal ? (
           <div className="modal">
             <DelModal delModalYes={this.delModalYes} delModalNo={this.delModalNo} />
