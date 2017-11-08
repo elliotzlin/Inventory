@@ -30,7 +30,7 @@ class Header extends React.Component {
     }
     return (
       <div className="header">
-        <button className="btn header-button file-container">
+        <button className="btn header-button file-container"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
           Upload Receipt
           <input
             type="file"
@@ -45,10 +45,10 @@ class Header extends React.Component {
           </button>
           {displayCat}
         </div>
-        <button className="btn header-button">
+        <button className="btn header-button"><i class="fa fa-pie-chart" aria-hidden="true"></i>
           Graphs
         </button>
-        <button className="btn header-button">
+        <button className="btn header-button"><i class="fa fa-sign-in" aria-hidden="true"></i>
           Login
         </button>
       </div>
