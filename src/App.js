@@ -64,6 +64,7 @@ class App extends Component {
     e.preventDefault();
     let reader = new FileReader();
     let image = e.target.files[0];
+    if (!image) return;
     reader.readAsDataURL(image);
 
     reader.onloadend = () => {

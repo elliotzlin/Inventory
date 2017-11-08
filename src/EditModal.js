@@ -62,7 +62,7 @@ class EditModal extends React.Component {
             onChange={(e) => this.onChangeHandler(e)}
           />
           {this.state.duplicate ? (
-            <span style={{ color: '#fc4a1a' }}><small>No Duplicate Allowed!</small></span>
+            <span style={{ color: '#fc4a1a' }}><small>Name already existed! Please pick a different name.</small></span>
           ) : null}
         </div>
         <div className="modal-btn">
