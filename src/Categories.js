@@ -22,7 +22,7 @@ class Categories extends React.Component {
         id: newId,
         x: false,
         checkMark: false,
-        item: this.state.input,
+        label: this.state.input,
       }
       this.setState({ input: '' });
       this.props.addCategory(newItem);
@@ -77,11 +77,12 @@ class Categories extends React.Component {
             checkSelected = "check-selected";
           }
           return (
-            <div className="one-cat" key={one.item.toString()}>
+            <div className="one-cat" key={one.label.toString()}>
               <span className="one-cat-label">
-                {one.item}
+                {one.label}
               </span>
               <span className="cat-icons">
+                <a role="button" style={{ 'color': 'black' }}><i class="fa fa-pencil" aria-hidden="true"></i></a>
                 <span className="check-wrapper"><a
                   onClick={() => this.onClickCheck(one.id, 'check')}
                   className={checkSelected}
@@ -91,13 +92,16 @@ class Categories extends React.Component {
                   onClick={() => this.onClickCheck(one.id, 'x')}
                   className={xSelected}
                   role="button"
-                ><strong>X</strong></a></span>
+                                            ><strong>X</strong></a></span>
               </span>
             </div>
           )
         }
         )}
-        <div className="utils">HAHAHHA</div>
+        <div className="utils">
+          <button className="btn btn-merge">+ Merge</button>
+          <button className="btn btn-delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+        </div>
       </div>
     )
   }

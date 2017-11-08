@@ -19,11 +19,24 @@
   border-bottom: 1px solid #f7b733;
 }
 
+.btn-merge {
+  height: 27px;
+  text-align: center;
+  padding: 2px;
+}
+
+.btn-delete {
+  height: 27px;
+  text-align: center;
+  padding: 2px;
+}
+
 .one-cat {
   background: #dfdce3;
+  height: 30px;
   border-radius: .25rem;
-  border: 1px solid #f7b733;
-  /*color: #fc4a1a;*/
+  border: 1px solid #dfdce3;
+  color: #fc4a1a;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -63,5 +76,10 @@
 }
 
 .utils {
-  color: black
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  background-color: #f7b733;
+  border: 3px solid #f7b733;
+  border-radius: .25rem;
 }
