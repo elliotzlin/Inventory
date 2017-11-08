@@ -17,7 +17,6 @@
   padding-top: 2px;
   border-right: 4px solid #f7b733;
   border-bottom: 1px solid #f7b733;
-  cursor: pointer;
 }
 
 .btn-non-click {
@@ -33,7 +32,6 @@
   padding: 2px;
   color: white;
   background-color: #fc4a1a;
-  cursor: pointer;
 }
 
 .btn-delete:active, .btn-delete:hover {
@@ -46,7 +44,6 @@
   padding: 2px;
   color: white;
   background-color: #4abdac;
-  cursor: pointer;
 }
 
 .btn-merge:active, .btn-merge:hover {

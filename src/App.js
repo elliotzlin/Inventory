@@ -4,6 +4,7 @@ import axios from 'axios';
 import Upload from './Upload';
 import InfoRow from './InfoRow';
 import Header from './Header';
+import DelModal from './DelModal';
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class App extends Component {
       categories: [],
       isDel: false,
       isMerge: false,
+      isDelModal: false,
     }
   }
 
@@ -93,12 +95,32 @@ class App extends Component {
     }
   }
 
+  callDelModal = () => {
+    this.setState({ isDelModal: !this.state.isDelModal });
+  }
+
+  delModalYes = () => {
+    const newCat = this.state.categories.filter((cat) => {
+      return cat.x === false;
+    });
+    this.setState({
+      categories: newCat,
+      isDelModal: false,
+      isDel: false,
+    })
+  }
+
+  delModalNo = () => {
+    this.setState({ isDelModal: false });
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <Header
             {...this.state}
+            callDelModal={this.callDelModal}
             updateUtilsBtn={this.updateUtilsBtn}
             updateCat={this.updateCat}
             addCategory={this.addCategory}
@@ -112,6 +134,11 @@ class App extends Component {
           />
           <InfoRow {...this.state} />
         </div>
+        {this.state.isDelModal ? (
+          <div className="modal">
+            <DelModal delModalYes={this.delModalYes} delModalNo={this.delModalNo} />
+          </div> ) : null
+        }
       </div>
     );
   }

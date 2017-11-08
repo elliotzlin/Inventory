@@ -1,0 +1,18 @@
+.modal-label {
+  padding: 10px 10px 10px;
+}
+
+.modal-btn {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  padding: 0px 10px 10px;
+}
+
+.del-btn {
+  color: white;
+  background-color: #fc4a1a;
+}
