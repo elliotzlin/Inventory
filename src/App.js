@@ -69,13 +69,13 @@ class App extends Component {
   }
 
   addCategory = (item) => {
-    const newItem = {
-      selected: false,
-      item,
-    }
     this.setState(prevState => ({
-      categories: prevState.categories.concat(newItem),
+      categories: prevState.categories.concat(item),
     }));
+  }
+
+  updateCat = (cat) => {
+    this.setState({ categories: cat });
   }
 
   render() {
@@ -84,6 +84,7 @@ class App extends Component {
         <header className="App-header">
           <Header
             {...this.state}
+            updateCat={this.updateCat}
             addCategory={this.addCategory}
             imageChange={this.imageChange}
           />

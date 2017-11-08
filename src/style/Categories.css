@@ -6,15 +6,16 @@
 }
 
 .button-add {
-  margin-left: -50px;
+  margin-left: -60px;
   height: 27px;
-  width: 49px;
+  width: 60px;
   background: #fc4a1a;
   color: white;
   border: 0;
+  border-radius: 0.5rem 2;
   text-align: center;
   padding-top: 2px;
-  border-right: 2px solid #f7b733;
+  border-right: 4px solid #f7b733;
   border-bottom: 1px solid #f7b733;
 }
 
@@ -32,12 +33,21 @@
   margin-left: 1rem;
 }
 
-.one-cat-addition {
-  color: white;
-  margin-right: 1rem;
+.x-selected {
+  color: #fc4a1a;
+  margin-left: 1rem;
 }
 
-.selected {
-  color: #fc4a1a;
+.check-selected {
+  color: #4abdac;
+  margin-left: 1rem;
+}
+
+.none-selected {
+  color: white;
+  margin-left: 1rem;
+}
+
+.cat-icons {
   margin-right: 1rem;
 }

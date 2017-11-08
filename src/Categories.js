@@ -12,8 +12,14 @@ class Categories extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     if (this.state.input !== '') {
+      const newItem = {
+        id: this.state.input.toString(),
+        x: false,
+        checkMark: false,
+        item: this.state.input,
+      }
       this.setState({ input: '' });
-      this.props.addCategory(this.state.input);
+      this.props.addCategory(newItem);
     }
   }
 
@@ -21,8 +27,30 @@ class Categories extends React.Component {
     this.setState({ input: e.target.value })
   }
 
-  onClickCat = (i) => {
-    console.log(i)
+  onClickX = (id) => {
+    let updatedCat = this.props.categories.map((cat) => {
+      if (cat.id === id) {
+        return {
+          ...cat,
+          x: !cat.x,
+        }
+      }
+      return cat;
+    });
+    this.props.updateCat(updatedCat);
+  }
+
+  onClickCheck = (id) => {
+    let updatedCat = this.props.categories.map((cat) => {
+      if (cat.id === id) {
+        return {
+          ...cat,
+          checkMark: !cat.checkMark,
+        }
+      }
+      return cat;
+    });
+    this.props.updateCat(updatedCat);
   }
 
   render() {
@@ -39,20 +67,31 @@ class Categories extends React.Component {
           <button onClick={this.onSubmit} className="btn button-add">+</button>
         </form>
         {this.props.categories.map((one, i) => {
-          if (one.selected === true) {
-            var oneCat = "selected one-cat-addition";
-          } else {
-            oneCat = "one-cat-addition";
+          let xSelected = "none-selected";
+          let checkSelected = "none-selected";
+          if (one.x === true) {
+            xSelected = "x-selected";
+          }
+          if (one.checkMark === true) {
+            checkSelected = "check-selected";
           }
           return (
-            <div className="one-cat" key={i}>
+            <div className="one-cat" key={one.item.toString()}>
               <span className="one-cat-label">
                 {one.item}
               </span>
-              <span
-                className={oneCat}
-                role="button"
-              >&#x2714;</span>
+              <span className="cat-icons">
+                <span
+                  onClick={() => this.onClickCheck(one.id)}
+                  className={checkSelected}
+                  role="button"
+                >&#x2714;</span>
+                <span
+                  onClick={() => this.onClickX(one.id)}
+                  className={xSelected}
+                  role="button"
+                ><strong>X</strong></span>
+              </span>
             </div>
           )
         }

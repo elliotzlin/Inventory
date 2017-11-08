@@ -17,6 +17,7 @@
     "nodemon": "nodemon server/app.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "yarn run build"
   }
 }

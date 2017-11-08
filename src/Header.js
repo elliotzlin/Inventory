@@ -19,7 +19,11 @@ class Header extends React.Component {
     let displayCat = null;
     let catIcon = <a className="categories-icon">&#9776;</a>;
     if (this.state.displayCat === true) {
-      displayCat = <Categories className="categories-label" addCategory={this.props.addCategory} categories={this.props.categories} />
+      displayCat = <Categories
+        className="categories-label"
+        updateCat={this.props.updateCat}
+        addCategory={this.props.addCategory}
+        categories={this.props.categories} />
       catIcon = <a className="categories-icon">X </a>
     }
     return (
