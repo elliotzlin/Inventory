@@ -6,6 +6,8 @@ class Categories extends React.Component {
     super(props);
     this.state = {
       input: '',
+      isDel: false,
+      isMerge: false,
     }
   }
 
@@ -23,6 +25,7 @@ class Categories extends React.Component {
         x: false,
         checkMark: false,
         label: this.state.input,
+        items: [],
       }
       this.setState({ input: '' });
       this.props.addCategory(newItem);
@@ -34,27 +37,44 @@ class Categories extends React.Component {
   }
 
   onClickCheck = (id, field) => {
-    console.log('in click')
+    let isX = false;
+    let isCheck = false;
     let updatedCat = this.props.categories.map((cat) => {
       if (cat.id === id) {
         if (field === 'x') {
+          if (cat.x === false) isX = true;
           return {
             ...cat,
             x: !cat.x,
           }
         } else {
+          if (cat.checkMark === false) isCheck = true;
           return {
             ...cat,
             checkMark: !cat.checkMark,
           }
         }
       }
+      if (cat.x === true) isX = true;
+      if (cat.checkMark === true) isCheck = true;
       return cat;
     });
+    if (isX) {
+      this.setState({ isDel: true });
+    } else {
+      this.setState({ isDel: false });
+    }
+    if (isCheck) {
+      this.setState({ isMerge: true });
+    } else {
+      this.setState({ isMerge: false });
+    }
     this.props.updateCat(updatedCat);
   }
 
   render() {
+    let mergeBtn = (!this.state.isMerge) ? <button className="btn btn-non-click">+ Merge</button> : <button className="btn btn-merge">+ Merge</button>
+    let delBtn = (!this.state.isDel) ? <button className="btn btn-non-click"><i className="fa fa-trash-o" aria-hidden="true"></i> Delete</button> : <button className="btn btn-delete"><i className="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -82,7 +102,7 @@ class Categories extends React.Component {
                 {one.label}
               </span>
               <span className="cat-icons">
-                <a role="button" style={{ 'color': 'black' }}><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a role="button" style={{ 'color': 'black' }}><i className="fa fa-pencil" aria-hidden="true"></i></a>
                 <span className="check-wrapper"><a
                   onClick={() => this.onClickCheck(one.id, 'check')}
                   className={checkSelected}
@@ -99,8 +119,8 @@ class Categories extends React.Component {
         }
         )}
         <div className="utils">
-          <button className="btn btn-merge">+ Merge</button>
-          <button className="btn btn-delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+          {mergeBtn}
+          {delBtn}
         </div>
       </div>
     )

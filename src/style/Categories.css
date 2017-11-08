@@ -17,18 +17,32 @@
   padding-top: 2px;
   border-right: 4px solid #f7b733;
   border-bottom: 1px solid #f7b733;
+  cursor: pointer;
 }
 
-.btn-merge {
+.btn-non-click {
   height: 27px;
   text-align: center;
   padding: 2px;
+  color: white;
 }
 
 .btn-delete {
   height: 27px;
   text-align: center;
   padding: 2px;
+  color: white;
+  background-color: #fc4a1a;
+  cursor: pointer;
+}
+
+.btn-merge {
+  height: 27px;
+  text-align: center;
+  padding: 2px;
+  color: white;
+  background-color: #4abdac;
+  cursor: pointer;
 }
 
 .one-cat {
