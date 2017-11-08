@@ -7,11 +7,10 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
-  },
-  "devDependencies": {
+    "react-dom": "^16.0.0",
     "react-scripts": "^1.0.17"
   },
+  "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "nodemon": "nodemon server/app.js",
