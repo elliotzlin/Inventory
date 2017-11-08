@@ -62,21 +62,21 @@ class Categories extends React.Component {
       return cat;
     });
     if (isX) {
-      this.setState({ isDel: true });
+      this.props.updateUtilsBtn(true, null);
     } else {
-      this.setState({ isDel: false });
+      this.props.updateUtilsBtn(false, null);
     }
     if (isCheck) {
-      this.setState({ isMerge: true });
+      this.props.updateUtilsBtn(null, true)
     } else {
-      this.setState({ isMerge: false });
+      this.props.updateUtilsBtn(null, false)
     }
     this.props.updateCat(updatedCat);
   }
 
   render() {
-    let mergeBtn = (!this.state.isMerge) ? <button className="btn btn-non-click">+ Merge</button> : <button className="btn btn-merge">+ Merge</button>
-    let delBtn = (!this.state.isDel) ? <button className="btn btn-non-click"><i className="fa fa-trash-o" aria-hidden="true"></i> Delete</button> : <button className="btn btn-delete"><i className="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+    let mergeBtn = (!this.props.isMerge) ? <button className="btn btn-non-click">+ Merge</button> : <button className="btn btn-merge">+ Merge</button>
+    let delBtn = (!this.props.isDel) ? <button className="btn btn-non-click"><i className="fa fa-trash-o" aria-hidden="true"></i> Delete</button> : <button className="btn btn-delete"><i className="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
     return (
       <div>
         <form onSubmit={this.onSubmit}>

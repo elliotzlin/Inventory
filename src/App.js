@@ -13,6 +13,8 @@ class App extends Component {
       imageViewer: '',
       infoRow: [],
       categories: [],
+      isDel: false,
+      isMerge: false,
     }
   }
 
@@ -78,12 +80,26 @@ class App extends Component {
     this.setState({ categories: cat });
   }
 
+  updateUtilsBtn = (isDel, isMerge) => {
+    if (isDel === true) {
+      this.setState({ isDel: true });
+    } else if (isDel === false) {
+      this.setState({ isDel: false });
+    }
+    if (isMerge === true) {
+      this.setState({ isMerge: true });
+    } else if (isMerge === false) {
+      this.setState({ isMerge: false });
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <Header
             {...this.state}
+            updateUtilsBtn={this.updateUtilsBtn}
             updateCat={this.updateCat}
             addCategory={this.addCategory}
             imageChange={this.imageChange}

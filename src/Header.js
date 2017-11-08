@@ -23,7 +23,9 @@ class Header extends React.Component {
         className="categories-label"
         updateCat={this.props.updateCat}
         addCategory={this.props.addCategory}
-        categories={this.props.categories} />
+        categories={this.props.categories}
+        {...this.props}
+                   />
       catIcon = <a className="categories-icon">X </a>
     }
     return (

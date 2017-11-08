@@ -36,6 +36,10 @@
   cursor: pointer;
 }
 
+.btn-delete:active {
+  background-color: #bf2900;
+}
+
 .btn-merge {
   height: 27px;
   text-align: center;
@@ -43,6 +47,10 @@
   color: white;
   background-color: #4abdac;
   cursor: pointer;
+}
+
+.btn-merge:active {
+  background-color: #188374;
 }
 
 .one-cat {
