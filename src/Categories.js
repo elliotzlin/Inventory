@@ -43,11 +43,13 @@ class Categories extends React.Component {
       if (cat.id === id) {
         if (field === 'x') {
           if (cat.x === false) isX = true;
+          if (cat.checkMark === true) isCheck = true;
           return {
             ...cat,
             x: !cat.x,
           }
         } else {
+          if (cat.x === true) isX = true;
           if (cat.checkMark === false) isCheck = true;
           return {
             ...cat,
