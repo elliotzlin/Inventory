@@ -23,7 +23,7 @@
   background: #dfdce3;
   border-radius: .25rem;
   border: 1px solid #f7b733;
-  color: #fc4a1a;
+  /*color: #fc4a1a;*/
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,21 +33,35 @@
   margin-left: 1rem;
 }
 
-.x-selected {
-  color: #fc4a1a;
-  margin-left: 1rem;
+.cat-icons {
+  margin-right: 1rem;
 }
 
-.check-selected {
+.check-wrapper {
+  color: #4abdac;
+  margin-left: 1rem;
+}
+.check-wrapper > a.none-selected {
+  color: white;
+  margin-left: 1rem;
+}
+.check-wrapper > a.check-selected {
   color: #4abdac;
   margin-left: 1rem;
 }
 
-.none-selected {
+.x-wrapper {
+  color: #fc4a1a;
+}
+.x-wrapper > a.x-selected {
+  color: #fc4a1a;
+  margin-left: 1rem;
+}
+.x-wrapper > a.none-selected {
   color: white;
   margin-left: 1rem;
 }
 
-.cat-icons {
-  margin-right: 1rem;
+.utils {
+  color: black
 }

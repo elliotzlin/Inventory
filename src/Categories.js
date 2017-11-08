@@ -11,9 +11,15 @@ class Categories extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    if (this.state.input !== '') {
+    const newId = this.state.input.toString();
+    let isNew = true;
+    let categories = this.props.categories;
+    for (var i=0; i<categories.length; i++) {
+      if (newId === categories[i].id) isNew = false;
+    }
+    if (this.state.input !== '' && isNew) {
       const newItem = {
-        id: this.state.input.toString(),
+        id: newId,
         x: false,
         checkMark: false,
         item: this.state.input,
@@ -27,25 +33,20 @@ class Categories extends React.Component {
     this.setState({ input: e.target.value })
   }
 
-  onClickX = (id) => {
+  onClickCheck = (id, field) => {
+    console.log('in click')
     let updatedCat = this.props.categories.map((cat) => {
       if (cat.id === id) {
-        return {
-          ...cat,
-          x: !cat.x,
-        }
-      }
-      return cat;
-    });
-    this.props.updateCat(updatedCat);
-  }
-
-  onClickCheck = (id) => {
-    let updatedCat = this.props.categories.map((cat) => {
-      if (cat.id === id) {
-        return {
-          ...cat,
-          checkMark: !cat.checkMark,
+        if (field === 'x') {
+          return {
+            ...cat,
+            x: !cat.x,
+          }
+        } else {
+          return {
+            ...cat,
+            checkMark: !cat.checkMark,
+          }
         }
       }
       return cat;
@@ -81,21 +82,22 @@ class Categories extends React.Component {
                 {one.item}
               </span>
               <span className="cat-icons">
-                <span
-                  onClick={() => this.onClickCheck(one.id)}
+                <span className="check-wrapper"><a
+                  onClick={() => this.onClickCheck(one.id, 'check')}
                   className={checkSelected}
                   role="button"
-                >&#x2714;</span>
-                <span
-                  onClick={() => this.onClickX(one.id)}
+                                                >&#x2714;</a></span>
+                <span className="x-wrapper"><a
+                  onClick={() => this.onClickCheck(one.id, 'x')}
                   className={xSelected}
                   role="button"
-                ><strong>X</strong></span>
+                ><strong>X</strong></a></span>
               </span>
             </div>
           )
         }
         )}
+        <div className="utils">HAHAHHA</div>
       </div>
     )
   }
