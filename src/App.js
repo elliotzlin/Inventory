@@ -153,7 +153,10 @@ class App extends Component {
       return cat.checkMark === false;
     });
     newCat.push(newItem);
-    this.setState({ categories: newCat });
+    this.setState({
+      categories: newCat,
+      isMerge: false,
+    });
   }
 
   editCatName = (cat) => {
