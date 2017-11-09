@@ -36,6 +36,7 @@
 .header {
   display: flex;
   justify-content: space-around;
+  padding: 10px;
 }
 
 .categories {
@@ -45,8 +46,4 @@
 .categories-icon {
   float: left;
   width: 10px;
-}
-
-.categories-actions {
-  /*opacity: 0;*/
 }
