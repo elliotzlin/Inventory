@@ -153,6 +153,18 @@ class App extends Component {
       return cat.checkMark === false;
     });
     newCat.push(newItem);
+    let isDel = false;
+    for (let i=0; i<newCat.length; i++) {
+      if (newCat[i].x === true) {
+        isDel = true;
+        break;
+      }
+    }
+    if (isDel) {
+      this.setState({ isDel: true });
+    } else {
+      this.setState({ isDel: false });
+    }
     this.setState({
       categories: newCat,
       isMerge: false,

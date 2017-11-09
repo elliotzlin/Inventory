@@ -16,14 +16,13 @@ class Header extends React.Component {
   }
 
   render() {
-    let displayCat = null;
     let catIcon = <a className="categories-icon">&#9776;</a>;
     if (this.state.displayCat === true) {
       catIcon = <a className="categories-icon">X </a>
     }
     return (
       <div className="header">
-        <button className="btn header-button file-container"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+        <button className="btn header-button file-container"><i className="fa fa-cloud-upload" aria-hidden="true"></i>
           Upload Receipt
           <input
             type="file"
@@ -41,10 +40,10 @@ class Header extends React.Component {
             {...this.props}
           />
         </div>
-        <button className="btn header-button"><i class="fa fa-pie-chart" aria-hidden="true"></i>
+        <button className="btn header-button"><i className="fa fa-pie-chart" aria-hidden="true"></i>
           Graphs
         </button>
-        <button className="btn header-button"><i class="fa fa-sign-in" aria-hidden="true"></i>
+        <button className="btn header-button"><i className="fa fa-sign-in" aria-hidden="true"></i>
           Login
         </button>
       </div>
