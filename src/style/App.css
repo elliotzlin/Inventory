@@ -14,11 +14,8 @@
   text-transform: uppercase;
 }
 
-.btn:focus,.btn:active {
+.btn:hover, .btn:active, .btn:focus {
   outline: none !important;
-}
-
-.btn:hover, .btn:active {
   box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08)
 }
 
