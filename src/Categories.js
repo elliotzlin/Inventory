@@ -75,8 +75,8 @@ class Categories extends React.Component {
   }
 
   render() {
-    let mergeBtn = (!this.props.isMerge) ? <button className="btn btn-non-click">+ Merge</button> : <button className="btn btn-merge">+ Merge</button>
-    let delBtn = (!this.props.isDel) ? <button className="btn btn-non-click">
+    let mergeBtn = (!this.props.isMerge) ? <button disabled={true} className="btn btn-non-click">+ Merge</button> : <button className="btn btn-merge">+ Merge</button>
+    let delBtn = (!this.props.isDel) ? <button disabled={true} className="btn btn-non-click">
       <i className="fa fa-trash-o" aria-hidden="true"></i> Delete</button> :
       <button onClick={this.props.callDelModal} className="btn btn-delete"><i className="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
     return (

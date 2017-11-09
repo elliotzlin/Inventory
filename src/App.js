@@ -168,10 +168,10 @@ class App extends Component {
             />
           </div> ) : null
         }
-        {this.state.isDelModal ? (
+        {this.state.isDelModal &&
           <div className="modal">
             <DelModal delModalYes={this.delModalYes} delModalNo={this.delModalNo} />
-          </div> ) : null
+          </div>
         }
       </div>
     );
