@@ -1,9 +1,17 @@
+.App {
+  font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+}
+
 .btn {
   cursor: pointer;
   text-shadow: 0 1px 3px rgba(36,180,126,.4);
   box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
   transition: all .15s ease;
   text-transform: uppercase;
+}
+
+.btn:focus,.btn:active {
+  outline: none !important;
 }
 
 .btn:hover, .btn:active {
@@ -19,7 +27,7 @@
 }
 
 .App-header {
-  background-color: #4abdac;
+  background: linear-gradient(150deg,#4abdac 15%,#05d5ff 70%,#a6ffcb 94%);
   height: 75px;
   padding: 20px 0 20px 0;
   color: white;

@@ -18,18 +18,19 @@
 }
 
 .header-button {
-  background-color: #f7b733;
+  background-color: #6772e5;
   color: white;
   width: 200px;
   align-self: flex-start;
 }
 
 .header-button:active {
-  background-color: #c78600;
+  background-color: #555abf;
 }
 
 .header-button:hover {
   cursor: pointer;
+  background-color: #7795f8;
 }
 
 .header {
