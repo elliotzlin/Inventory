@@ -6,6 +6,7 @@ import InfoRow from './InfoRow';
 import Header from './Header';
 import DelModal from './DelModal';
 import EditModal from './EditModal';
+import MergeModal from './MergeModal';
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends Component {
       isMerge: false,
       isDelModal: false,
       isEditModal: false,
+      isMergeModal: false,
     }
   }
 
@@ -128,6 +130,32 @@ class App extends Component {
     this.setState({ isDelModal: false });
   }
 
+  callMergeModal = () => {
+    this.setState({ isMergeModal: !this.state.isMergeModal });
+  }
+
+  mergeModalYes = (newLabel) => {
+    let newItem = {
+      id: newLabel.toString(),
+      x: false,
+      checkMark: false,
+      label: newLabel,
+      items: [],
+      total: 0,
+    };
+    let categories = this.state.categories;
+    for (let i=0; i<categories.length; i++) {
+      if (categories[i].checkMark === true) {
+        newItem.items.push(categories[i].items);
+      }
+    }
+    let newCat = this.state.categories.filter((cat) => {
+      return cat.checkMark === false;
+    });
+    newCat.push(newItem);
+    this.setState({ categories: newCat });
+  }
+
   editCatName = (cat) => {
     this.setState({ isEditModal: !this.state.isEditModal });
     this.cat = cat;
@@ -144,6 +172,7 @@ class App extends Component {
         <header className="App-header">
           <Header
             {...this.state}
+            callMergeModal={this.callMergeModal}
             editCatName={this.editCatName}
             callDelModal={this.callDelModal}
             updateUtilsBtn={this.updateUtilsBtn}
@@ -159,7 +188,7 @@ class App extends Component {
           />
           <InfoRow {...this.state} />
         </div>
-        {this.state.isEditModal ? (
+        {this.state.isEditModal &&
           <div className="modal">
             <EditModal
               cat={this.cat}
@@ -167,11 +196,16 @@ class App extends Component {
               editCatName={this.editCatName}
               categories={this.state.categories}
             />
-          </div> ) : null
+          </div>
         }
         {this.state.isDelModal &&
           <div className="modal">
             <DelModal delModalYes={this.delModalYes} delModalNo={this.delModalNo} />
+          </div>
+        }
+        {this.state.isMergeModal &&
+          <div className="modal">
+            <MergeModal {...this.state} mergeModalYes={this.mergeModalYes} callMergeModal={this.callMergeModal} />
           </div>
         }
       </div>
