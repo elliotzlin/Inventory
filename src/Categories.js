@@ -79,8 +79,9 @@ class Categories extends React.Component {
     let delBtn = (!this.props.isDel) ? <button disabled={true} className="btn btn-non-click">
       <i className="fa fa-trash-o" aria-hidden="true"></i> Delete</button> :
       <button onClick={this.props.callDelModal} className="btn btn-delete"><i className="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+    let displayCat = (this.props.displayCat) ? "categories-actions-show" : "categories-actions-hide";
     return (
-      <div>
+      <div className={displayCat}>
         <form onSubmit={this.onSubmit}>
           <input
             value={this.state.input}
@@ -101,7 +102,7 @@ class Categories extends React.Component {
             checkSelected = "check-selected";
           }
           return (
-            <div className="one-cat" key={one.label.toString()}>
+            <li className="one-cat" key={one.label.toString()}>
               <span className="one-cat-label">
                 {one.label}
               </span>
@@ -118,7 +119,7 @@ class Categories extends React.Component {
                   role="button"
                                             ><strong>X</strong></a></span>
               </span>
-            </div>
+            </li>
           )
         }
         )}

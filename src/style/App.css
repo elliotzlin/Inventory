@@ -2,6 +2,10 @@
   font-family: Camphor,Open Sans,Segoe UI,sans-serif;
 }
 
+.fa {
+  float:left;
+}
+
 .btn {
   cursor: pointer;
   text-shadow: 0 1px 3px rgba(36,180,126,.4);

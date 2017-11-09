@@ -11,6 +11,7 @@ class EditModal extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.cat === undefined) return;
     this.setState({
       label: this.props.cat.label,
     });

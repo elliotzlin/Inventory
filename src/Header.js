@@ -19,13 +19,6 @@ class Header extends React.Component {
     let displayCat = null;
     let catIcon = <a className="categories-icon">&#9776;</a>;
     if (this.state.displayCat === true) {
-      displayCat = <Categories
-        className="categories-label"
-        updateCat={this.props.updateCat}
-        addCategory={this.props.addCategory}
-        categories={this.props.categories}
-        {...this.props}
-                   />
       catIcon = <a className="categories-icon">X </a>
     }
     return (
@@ -43,7 +36,10 @@ class Header extends React.Component {
           >
             {catIcon} <span>Categories</span>
           </button>
-          {displayCat}
+          <Categories
+            {...this.state}
+            {...this.props}
+          />
         </div>
         <button className="btn header-button"><i class="fa fa-pie-chart" aria-hidden="true"></i>
           Graphs
