@@ -2,7 +2,7 @@
   width: 400px;
   padding-right: 50px;
   border: 3px solid #6772e5;
-  border-radius: .25rem;
+  border-radius: .25rem .25rem 0 0;
 }
 
 .button-add {
@@ -35,7 +35,7 @@
 }
 
 .btn-delete:active, .btn-delete:hover {
-  background-color: #bf2900;
+  background-color: #f47b5a;
 }
 
 .btn-merge {
@@ -47,14 +47,16 @@
 }
 
 .btn-merge:active, .btn-merge:hover {
-  background-color: #188374;
+  background-color: #85b6af;
 }
 
 .one-cat {
   background: #dfdce3;
+  padding: 1px;
   height: 30px;
-  border-radius: .25rem;
-  border: 1px solid #dfdce3;
+  /*border-radius: .25rem;*/
+  border-left: 3px solid #6772e5;
+  border-right: 3px solid #6772e5;
   color: #fc4a1a;
   display: flex;
   align-items: center;
@@ -100,5 +102,5 @@
   color: black;
   background-color: #6772e5;
   border: 3px solid #6772e5;
-  border-radius: .25rem;
+  border-radius: 0 0 .25rem .25rem;
 }
