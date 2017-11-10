@@ -8,6 +8,8 @@ import DelModal from './DelModal';
 import EditModal from './EditModal';
 import MergeModal from './MergeModal';
 
+import fakeData from './fakeData';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,7 @@ class App extends Component {
       image: '',
       imageViewer: '',
       infoRow: [],
-      categories: [],
+      categories: fakeData,
       isDel: false,
       isMerge: false,
       isDelModal: false,
@@ -146,7 +148,7 @@ class App extends Component {
     let categories = this.state.categories;
     for (let i=0; i<categories.length; i++) {
       if (categories[i].checkMark === true) {
-        newItem.items.push(categories[i].items);
+        newItem.items = newItem.items.concat(categories[i].items);
       }
     }
     let newCat = this.state.categories.filter((cat) => {

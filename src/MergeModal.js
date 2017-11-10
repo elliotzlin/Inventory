@@ -26,7 +26,7 @@ class MergeModal extends React.Component {
         break;
       }
     }
-    if (isNew) {
+    if (isNew && this.state.label !== '') {
       this.props.mergeModalYes(this.state.label);
       this.props.callMergeModal();
     } else {
@@ -47,7 +47,7 @@ class MergeModal extends React.Component {
             onChange={(e) => this.onChangeHandler(e)}
           />
           {this.state.duplicate &&
-            <span style={{ color: '#fc4a1a' }}><small>Name already existed! Please pick a different name.</small></span>
+            <span style={{ color: '#fc4a1a' }}><small>Name already existed or blank entry!</small></span>
           }
         </div>
         <div className="modal-btn">
