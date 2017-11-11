@@ -7,6 +7,7 @@ import Header from './Header';
 import DelModal from './DelModal';
 import EditModal from './EditModal';
 import MergeModal from './MergeModal';
+import PieGraph from './PieGraph'
 
 import fakeData from './fakeData';
 
@@ -57,6 +58,7 @@ class App extends Component {
     })
     .then(infoRow => {
       if (infoRow) {
+        console.log('infoRow', infoRow)
         this.setState({ infoRow });
       } else {
         return;
@@ -225,6 +227,7 @@ class App extends Component {
             <MergeModal {...this.state} mergeModalYes={this.mergeModalYes} callMergeModal={this.callMergeModal} />
           </div>
         }
+        <PieGraph />
       </div>
     );
   }
