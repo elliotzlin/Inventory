@@ -9,6 +9,8 @@ const BarGraph = (props) => {
   let labelArray = categories.map((oneCat) => {
     return oneCat.label;
   })
+
+  // this is the weird bars
   dataArray.unshift(0)
   return (
     <div>
@@ -18,7 +20,6 @@ const BarGraph = (props) => {
         <VictoryAxis/>
         <VictoryBar
           data={dataArray}
-          width={1000000}
           animate={{
             duration: 2000,
             onLoad: { duration: 2000 },

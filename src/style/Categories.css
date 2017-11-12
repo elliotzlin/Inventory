@@ -114,12 +114,16 @@
 }
 
 .categories-actions-hide {
+  z-index: -10;
+  transform: translateY(1000px);
+  position: absolute;
   transition: height 200ms 200ms, opacity 200ms 0ms;
   opacity: 0.0;
   height: 0px;
 }
 
 .categories-actions-show {
+  position: absolute;
   opacity: 1.0;
   transition: height 100ms 0ms, opacity 100ms 100ms;
   height: 100%;

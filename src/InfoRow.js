@@ -3,8 +3,12 @@ import Row from './Row';
 
 const InfoRow = (props) => (
   <div>
-    {props.infoRow.map((oneRow) =>
-      <Row oneRow={oneRow} />
+    {props.infoRow.map((oneRow, i) =>
+      <Row
+        key={i}
+        {...props}
+        i={i}
+        oneRow={oneRow} />
     )}
   </div>
 )

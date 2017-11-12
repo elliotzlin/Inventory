@@ -28,7 +28,7 @@ class Header extends React.Component {
             type="file"
             onChange={(e)=>this.props.imageChange(e)} />
         </button>
-        <div>
+        <div style={{ "zIndex": 30 }}>
           <button
             className="btn categories header-button"
             onClick={this.onCategoriesClick}
@@ -42,9 +42,9 @@ class Header extends React.Component {
         </div>
         <button onClick={this.props.switchGraphs} className="btn header-button">
           {this.props.isBar ? (
-            <i className="fa fa-pie-chart" aria-hidden="true"></i>
+            <i className="fa fa-bar-chart" aria-hidden="true"></i>
           ) : (
-            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+            <i className="fa fa-pie-chart" aria-hidden="true"></i>
           )}
           Graphs
         </button>
