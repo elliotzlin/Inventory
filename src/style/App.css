@@ -67,11 +67,10 @@ html {
 }
 
 .graphs {
+  margin-right: 40px;
   position: relative;
-  height: 30%;
   width: 30%;
-  border-radius: 5px;
-  box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
+  right: 70px;
 }
 
 .bar-graph-hide, .pie-graph-hide {
@@ -90,10 +89,13 @@ html {
 
 .row-entry {
   position: relative;
-  /*border: 3px solid #6772e5;*/
   margin: 10px;
   padding: 20px;
   border-radius: .5rem;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+}
+
+.row-entry:hover {
   box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
 }
 
@@ -101,5 +103,5 @@ html {
   height: 500px;
   overflow: scroll;
   position: relative;
-  left: -70px;
+  left: -50px;
 }
