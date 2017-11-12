@@ -10,6 +10,7 @@ import MergeModal from './MergeModal';
 import PieGraph from './PieGraph';
 import BarGraph from './BarGraph';
 import EditReceiptModal from './EditReceiptModal';
+import Spinner from './Spinner';
 
 import fakeData from './fakeData';
 
@@ -28,6 +29,7 @@ class App extends Component {
       isMergeModal: false,
       isBar: false,
       isEditReceiptModal: false,
+      isSpinner: false,
     }
   }
 
@@ -80,6 +82,12 @@ class App extends Component {
       this.setState({
         image,
         imageViewer: reader.result,
+        isSpinner: true,
+      }, () => {
+        this.processImage(e);
+        setTimeout(() => {
+          this.setState({ isSpinner: false });
+        }, 1000);
       });
     };
   }
@@ -234,12 +242,21 @@ class App extends Component {
               imageChange={this.imageChange}
             />
           </div>
-          <div className="info-row">
-            <InfoRow
-              {...this.state}
-              callEditReceiptModal={this.callEditReceiptModal}
-            />
-          </div>
+          {this.state.isSpinner ? (
+            <div style={{
+              position: "relative",
+              left: "-70px",
+            }}>
+              <Spinner />
+            </div>
+          ) : (
+            <div className="info-row">
+              <InfoRow
+                {...this.state}
+                callEditReceiptModal={this.callEditReceiptModal}
+              />
+            </div>
+          )}
           <div className="graphs">
             <div className={pieGraphClass}>
               <PieGraph {...this.state} />
