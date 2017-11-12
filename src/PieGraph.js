@@ -26,6 +26,8 @@ const PieChart = (props) => {
         theme={VictoryTheme.material}
         animate={{ duration: 2000 }}
         colorScale={["#fc4a1a", "#4abdac", "#f7b733", "#555abf", "#c2bcbc" ]}
+        labelRadius={120}
+        style={{ labels: { fill: "white", fontSize: 10, fontWeight: "bold" } }}
         data={dataArray}
       />
     </svg>
