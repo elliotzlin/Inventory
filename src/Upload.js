@@ -10,7 +10,7 @@ const Upload = (props) => {
     $imageViewer = (<div className="preview-text">Upload Receipt</div>);
   }
   return (
-    <div className="preview-component">
+    <div>
       <button className="btn submitButton"
         type="submit"
         onClick={(e)=>props.processImage(e)}>Process Upload</button>

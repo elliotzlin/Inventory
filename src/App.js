@@ -7,7 +7,8 @@ import Header from './Header';
 import DelModal from './DelModal';
 import EditModal from './EditModal';
 import MergeModal from './MergeModal';
-import PieGraph from './PieGraph'
+import PieGraph from './PieGraph';
+import BarGraph from './BarGraph';
 
 import fakeData from './fakeData';
 
@@ -24,6 +25,7 @@ class App extends Component {
       isDelModal: false,
       isEditModal: false,
       isMergeModal: false,
+      isBar: false,
     }
   }
 
@@ -58,7 +60,7 @@ class App extends Component {
     })
     .then(infoRow => {
       if (infoRow) {
-        console.log('infoRow', infoRow)
+        console.log('infoRow', JSON.stringify(infoRow))
         this.setState({ infoRow });
       } else {
         return;
@@ -112,6 +114,7 @@ class App extends Component {
     const newCat = this.state.categories.filter((cat) => {
       return cat.x === false;
     });
+
     this.setState({
       categories: newCat,
       isDelModal: false,
@@ -151,6 +154,7 @@ class App extends Component {
     for (let i=0; i<categories.length; i++) {
       if (categories[i].checkMark === true) {
         newItem.items = newItem.items.concat(categories[i].items);
+        newItem.total += categories[i].total;
       }
     }
     let newCat = this.state.categories.filter((cat) => {
@@ -184,13 +188,19 @@ class App extends Component {
     this.setState({ categories: cats });
   }
 
+  switchGraphs = () => {
+    this.setState({ isBar: !this.state.isBar });
+  }
+
   render() {
+    let graph = (this.state.isBar) ? <PieGraph {...this.state} /> : <BarGraph {...this.state} />
     return (
       <div className="App">
         <span className="site-name"><strong>INVENTORY - BA</strong></span>
         <header className="App-header">
           <Header
             {...this.state}
+            switchGraphs={this.switchGraphs}
             callMergeModal={this.callMergeModal}
             editCatName={this.editCatName}
             callDelModal={this.callDelModal}
@@ -201,11 +211,16 @@ class App extends Component {
           />
         </header>
         <div className="App-container">
-          <Upload {...this.state}
-            processImage={this.processImage}
-            imageChange={this.imageChange}
-          />
-          <InfoRow {...this.state} />
+          <div>
+            <Upload {...this.state}
+              processImage={this.processImage}
+              imageChange={this.imageChange}
+            />
+            <InfoRow {...this.state} />
+          </div>
+          <div className="graphs">
+            {graph}
+          </div>
         </div>
         {this.state.isEditModal &&
           <div className="modal">
@@ -227,7 +242,6 @@ class App extends Component {
             <MergeModal {...this.state} mergeModalYes={this.mergeModalYes} callMergeModal={this.callMergeModal} />
           </div>
         }
-        <PieGraph />
       </div>
     );
   }

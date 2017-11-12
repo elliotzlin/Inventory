@@ -40,7 +40,12 @@ class Header extends React.Component {
             {...this.props}
           />
         </div>
-        <button className="btn header-button"><i className="fa fa-pie-chart" aria-hidden="true"></i>
+        <button onClick={this.props.switchGraphs} className="btn header-button">
+          {this.props.isBar ? (
+            <i className="fa fa-pie-chart" aria-hidden="true"></i>
+          ) : (
+            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+          )}
           Graphs
         </button>
         <button className="btn header-button"><i className="fa fa-sign-in" aria-hidden="true"></i>
