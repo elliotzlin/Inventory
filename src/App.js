@@ -7,7 +7,10 @@ import Header from './Header';
 import DelModal from './DelModal';
 import EditModal from './EditModal';
 import MergeModal from './MergeModal';
-import PieGraph from './PieGraph'
+import PieGraph from './PieGraph';
+import BarGraph from './BarGraph';
+import EditReceiptModal from './EditReceiptModal';
+import Spinner from './Spinner';
 
 import fakeData from './fakeData';
 
@@ -24,6 +27,9 @@ class App extends Component {
       isDelModal: false,
       isEditModal: false,
       isMergeModal: false,
+      isBar: false,
+      isEditReceiptModal: false,
+      isSpinner: false,
     }
   }
 
@@ -58,7 +64,6 @@ class App extends Component {
     })
     .then(infoRow => {
       if (infoRow) {
-        console.log('infoRow', infoRow)
         this.setState({ infoRow });
       } else {
         return;
@@ -77,6 +82,12 @@ class App extends Component {
       this.setState({
         image,
         imageViewer: reader.result,
+        isSpinner: true,
+      }, () => {
+        this.processImage(e);
+        setTimeout(() => {
+          this.setState({ isSpinner: false });
+        }, 1000);
       });
     };
   }
@@ -112,6 +123,7 @@ class App extends Component {
     const newCat = this.state.categories.filter((cat) => {
       return cat.x === false;
     });
+
     this.setState({
       categories: newCat,
       isDelModal: false,
@@ -151,6 +163,7 @@ class App extends Component {
     for (let i=0; i<categories.length; i++) {
       if (categories[i].checkMark === true) {
         newItem.items = newItem.items.concat(categories[i].items);
+        newItem.total += categories[i].total;
       }
     }
     let newCat = this.state.categories.filter((cat) => {
@@ -184,13 +197,35 @@ class App extends Component {
     this.setState({ categories: cats });
   }
 
+  switchGraphs = () => {
+    this.setState({ isBar: !this.state.isBar });
+  }
+
+  callEditReceiptModal = (oneRowRec, i) => {
+    this.setState({ isEditReceiptModal : !this.state.isEditReceiptModal });
+    this.oneRowRec = oneRowRec;
+    this.index = i;
+  }
+
+  onEditRecSubmit = (input, index) => {
+    let newInfoRow = this.state.infoRow;
+    newInfoRow[index] = input;
+    this.setState({
+      infoRow: newInfoRow,
+      isEditReceiptModal: false,
+    })
+  }
+
   render() {
+    let barGraphClass = (this.state.isBar) ? "bar-graph-show" : "bar-graph-hide";
+    let pieGraphClass = (!this.state.isBar) ? "pie-graph-show" : "pie-graph-hide";
     return (
       <div className="App">
         <span className="site-name"><strong>INVENTORY - BA</strong></span>
         <header className="App-header">
           <Header
             {...this.state}
+            switchGraphs={this.switchGraphs}
             callMergeModal={this.callMergeModal}
             editCatName={this.editCatName}
             callDelModal={this.callDelModal}
@@ -201,11 +236,35 @@ class App extends Component {
           />
         </header>
         <div className="App-container">
-          <Upload {...this.state}
-            processImage={this.processImage}
-            imageChange={this.imageChange}
-          />
-          <InfoRow {...this.state} />
+          <div style={{ "paddingLeft": "60px" }}>
+            <Upload {...this.state}
+              processImage={this.processImage}
+              imageChange={this.imageChange}
+            />
+          </div>
+          {this.state.isSpinner ? (
+            <div style={{
+              position: "relative",
+              left: "-70px",
+            }}>
+              <Spinner />
+            </div>
+          ) : (
+            <div className="info-row">
+              <InfoRow
+                {...this.state}
+                callEditReceiptModal={this.callEditReceiptModal}
+              />
+            </div>
+          )}
+          <div className="graphs">
+            <div className={pieGraphClass}>
+              <PieGraph {...this.state} />
+            </div>
+            <div className={barGraphClass}>
+              <BarGraph {...this.state} />
+            </div>
+          </div>
         </div>
         {this.state.isEditModal &&
           <div className="modal">
@@ -227,7 +286,17 @@ class App extends Component {
             <MergeModal {...this.state} mergeModalYes={this.mergeModalYes} callMergeModal={this.callMergeModal} />
           </div>
         }
-        <PieGraph />
+        {this.state.isEditReceiptModal &&
+          <div className="modal">
+            <EditReceiptModal
+              {...this.state}
+              oneRowRec={this.oneRowRec}
+              callEditReceiptModal={this.callEditReceiptModal}
+              index={this.index}
+              onEditRecSubmit={this.onEditRecSubmit}
+            />
+          </div>
+        }
       </div>
     );
   }

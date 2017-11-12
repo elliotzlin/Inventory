@@ -1,68 +1,39 @@
 import React from 'react';
-var PieTooltip = require('react-d3-tooltip').PieTooltip;
+import { VictoryPie, VictoryTheme } from 'victory';
 
-class PieGraph extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const PieChart = (props) => {
+  const { categories } = props;
+  let sum = categories.reduce((a, b) => {
+    return a + b.total;
+  },0);
 
+  let dataArray = categories.map((oneCat) => {
+    return {
+      ...oneCat,
+      label: `${oneCat.label}:` + '\n' + `$${oneCat.total.toString()}`,
+      y: Math.floor(oneCat.total/sum * 100),
     }
-  }
+  })
 
-  render() {
-    var generalChartData = require('dsv?delimiter=,!../data/pie_test.csv')
-
-  var width = 500,
-    height = 300,
-    title = "Pie Chart With Tooltip",
-    // value accessor
-    value = function(d) {
-      return +d.population;
-    },
-    // name accessor
-    name = function(d) {
-      return d.age;
-    },
-    // field means what your input field name is,
-    // name means the name show in the legend in your chart.
-    chartSeries = [
-      {
-        "field": "<5",
-        "name": "less than 5"
-      },
-      {
-        "field": "5-13",
-        "name": "5 to 13"
-      },
-      {
-        "field": "14-17",
-        "name": "14 to 17"
-      },
-      {
-        "field": "18-24",
-        "name": "18 to 24"
-      },
-      {
-        "field": "25-44",
-        "name": "25 to 44"
-      },
-      {
-        "field": "45-64",
-        "name": "45 to 64"
-      }
-    ];
-    return (
-      <PieTooltip
-        title= {title}
-        data= {generalChartData}
-        width= {width}
-        height= {height}
-        chartSeries= {chartSeries}
-        value = {value}
-        name = {name}
-      />
-    )
-  }
+  return (
+    <div>
+      <svg width={520} height={520}>
+        <circle cx={200} cy={200} r={60} fill="#c65c55" />
+        <text x="39%" y="39%" alignmentBaseline="middle" textAnchor="middle">Total: {sum}</text>
+        <VictoryPie
+          standalone={false}
+          width={400} height={400}
+          innerRadius={100}
+          theme={VictoryTheme.material}
+          animate={{ duration: 2000 }}
+          colorScale={["#fc4a1a", "#4abdac", "#f7b733", "#555abf", "#a6ffcb" ]}
+          labelRadius={120}
+          style={{ labels: { fill: "white", fontSize: 10, fontWeight: "bold" } }}
+          data={dataArray}
+        />
+      </svg>
+    </div>
+  )
 }
 
-export default PieGraph;
+export default PieChart;

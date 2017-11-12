@@ -114,12 +114,17 @@
 }
 
 .categories-actions-hide {
+  z-index: -10;
+  /*transform: translateY(1000px);*/
+  position: relative;
   transition: height 200ms 200ms, opacity 200ms 0ms;
-  opacity: 0.0;
+  opacity: 0;
   height: 0px;
 }
 
 .categories-actions-show {
+  z-index: 30;
+  position: relative;
   opacity: 1.0;
   transition: height 100ms 0ms, opacity 100ms 100ms;
   height: 100%;

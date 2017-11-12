@@ -7,9 +7,9 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "react": "^16.0.0",
-    "react-d3-basic": "^1.6.11",
     "react-dom": "^16.0.0",
-    "react-scripts": "^1.0.17"
+    "react-scripts": "^1.0.17",
+    "victory": "^0.24.1"
   },
   "devDependencies": {},
   "scripts": {
