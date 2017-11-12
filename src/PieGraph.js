@@ -10,7 +10,7 @@ const PieChart = (props) => {
   let dataArray = categories.map((oneCat) => {
     return {
       ...oneCat,
-      label: `${oneCat.label}:` + '\n' + `${oneCat.total.toString()}`,
+      label: `${oneCat.label}:` + '\n' + `$${oneCat.total.toString()}`,
       y: Math.floor(oneCat.total/sum * 100),
     }
   })

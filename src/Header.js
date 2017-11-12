@@ -28,7 +28,7 @@ class Header extends React.Component {
             type="file"
             onChange={(e)=>this.props.imageChange(e)} />
         </button>
-        <div style={{ "zIndex": 30 }}>
+        <div>
           <button
             className="btn categories header-button"
             onClick={this.onCategoriesClick}
